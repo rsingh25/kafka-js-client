@@ -4,6 +4,8 @@ node based kafka producer and consumer for quick testing. with quick application
 
 ## How to install
 
-- just copy NODE_HOME/node_modules
-- move the cmd files into NODE_HOME
+- Add the bin folder to path. 
+
+## sample test
+refer to kafka-demo.md
 
