@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-const { brokers = "localhost:9092,localhost:9093,localhost:9094", topics, consumerGroup } = require('yargs')
-    .scriptName("consumer")
-    .usage("Usage: $0 --brokers string --topic string --consumerGroup string")
+const { brokers = 'localhost:9092,localhost:9093,localhost:9094', topics, consumerGroup } = require('yargs')
+    .scriptName('consumer')
+    .usage('Usage: $0 --brokers string --topic string --consumerGroup string')
+    .demand(["topics"])
     .argv;
 
 const { Kafka, logLevel } = require('kafkajs')
