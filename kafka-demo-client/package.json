@@ -15,5 +15,9 @@
   "dependencies": {
     "kafkajs": "^2.2.2",
     "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@types/kafkajs": "^1.9.0",
+    "@types/yargs": "^17.0.13"
   }
 }
