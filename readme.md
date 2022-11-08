@@ -9,13 +9,14 @@ Some stats on Kafka ability:
 
 ### Pros
 
-- Great pairing with big data systems like hadoop, spark
+- large scale data movement pipelines, Great pairing with big data systems like hadoop, spark
 - Consumers are autonomous and horizontally scale. Slow or failed consumers don’t impact other consumers.
 
 ### Cons
 
 - Message Routing is not supported
-- Message can't have different priority, policy security etc.
+- Message can't have different priority, policy, security etc. GDPR is a challenge
+- Data governance is a challenge because ineviably multiple payload version get added by several producers. There is no std data governance model. (use Kafka schema registry, or Need third party tools for schema versions mangement).
 
 ## High level Architecture
 
@@ -24,6 +25,8 @@ Some stats on Kafka ability:
 - Why fast?
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/UNUz1-msbOM/0.jpg)](https://www.youtube.com/watch?v=UNUz1-msbOM)
+
+- what is kafka connect?
 
 ## Broker Cluster
 
