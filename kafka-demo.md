@@ -6,7 +6,7 @@ node based kafka producer and consumer for quick testing.
 
 ### How to install
 
-- Add the bin folder to path.
+- Add producer.js and consumer.js using node
 
 # Demo Setup
 
@@ -89,21 +89,21 @@ we create three consumer groups
 note: ensure kafka-demo-client/bin is added to %path%
 
 ```
-kafka-consume --topics policy_management --consumerGroup claims
-kafka-consume --topics policy_management --consumerGroup claims
+node consumer.js --topics policy_management --consumerGroup claims
+node consumer.js --topics policy_management --consumerGroup claims
 //Check rebalancing
 //rpk group describe claims
-kafka-consume --topics policy_management --consumerGroup claims
-kafka-consume --topics policy_management --consumerGroup claims
+node consumer.js --topics policy_management --consumerGroup claims
+node consumer.js --topics policy_management --consumerGroup claims
 
 ```
 
 ### start producers
 
 ```
-kafka-produce --topic policy_management
-//kafka-produce --topic policy_management
-//kafka-produce --topic policy_management
+node producer.js --topic policy_management
+//node producer.js --topic policy_management
+//node producer.js --topic policy_management
 ```
 
 ### cleanup
