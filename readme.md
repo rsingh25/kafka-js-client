@@ -14,7 +14,8 @@ Some stats on Kafka ability:
 
 ### Cons
 
-- Message Routing is not supported
+- Message Routing, message transformation is efficient.
+  - Kafka stream can be used for filtering, transofrmation etc. however it means, message duplication and addtional purpose built topics.
 - Message can't have different priority, policy, security etc. GDPR is a challenge
 - Data governance is a challenge because ineviably multiple payload version get added by several producers. There is no std data governance model. (use Kafka schema registry, or Need third party tools for schema versions mangement).
 
@@ -27,6 +28,8 @@ Some stats on Kafka ability:
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/UNUz1-msbOM/0.jpg)](https://www.youtube.com/watch?v=UNUz1-msbOM)
 
 - what is kafka connect?
+- <ins>kafka stream</ins> - for filtering, transoforming, agreegation etc.
+- <ins>KSQL</ins> - a kafka client that follows SQL schema.
 
 ## Broker Cluster
 
@@ -82,7 +85,7 @@ It is possible but there is a pitfall,
 
 Sequence Flow: Get cluster metadata using bootstrap brokers (& keep up-to-date) -> serialize -> identify partition (using partition strategy) -> send to partition leader (in micro batch) -> acknowledge or retry -> loop -> disconnect
 
-**Implementing and using partition strategy is producer responsibility**
+<ins>Producer uses partition strategy to identify partition and talks to the partition leader directly.</ins>
 
 ```properties
 request.required.acks = 0: fire & forget, 1: leader acknowledged, 2: quorum acknowledged

@@ -23,6 +23,7 @@ const actions = [
   "OPPORTUNITY",
   "RENEWAL_DUE",
   "INVESTIDATION_REPORT_ADDED",
+  "ISSUED",
   "CLAIM_INIT",
 ];
 

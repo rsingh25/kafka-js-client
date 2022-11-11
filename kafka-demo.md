@@ -1,12 +1,12 @@
 # Kafka demo
 
-## kafka-js-client setup
+## kafka-js-client
 
-node based kafka producer and consumer for quick testing.
+node based kafka producer and consumer for quick testing. Execute producer.js and consumer.js using node
 
-### How to install
+## kafka-stream-demo
 
-- Add producer.js and consumer.js using node
+Basic filering example to explain usage.
 
 # Demo Setup
 
@@ -19,14 +19,13 @@ Kafka demo using Red Panda
 
 ```
 key = policy_id
-value = OPPORTUNITY, RENEWAL_DUE, INVESTIDATION_REPORT_ADDED, CLAIM_INIT
+value = OPPORTUNITY, ISSUED, RENEWAL_DUE, INVESTIDATION_REPORT_ADDED, CLAIM_INIT
 ```
 
 2. Multiple consumer groups consumes the events,
 
-- CLAIM consumer group is interested in CLAIM_INIT, INVESTIDATION_REPORT_ADDED
-- SALES consumer group is interested in OPPORTUNITY, RENEWAL_DUE
-- client notification group in interested in CLAIM_INIT, RENEWAL_DUE
+- CLAIM consumer group is interested in CLAIM_INIT, INVESTIDATION_REPORT_ADDED, ISSUED
+- SALES consumer group is interested in OPPORTUNITY, RENEWAL_DUE, ISSUED
 
 topic name - policy_management
 partitions - 3
@@ -62,6 +61,9 @@ we are using 3 partitions and 3 replicas. Hence every consumer group can have up
 
 ```
 rpk topic create policy_management --partitions 3 --replicas 3
+rpk topic create policy_management_sales --partitions 3 --replicas 1
+rpk topic create policy_management_claims --partitions 3 --replicas 1
+
 rpk topic list --detailed
 //rpk topic delete policy_management
 //rpk topic describe policy_management
@@ -69,12 +71,11 @@ rpk topic list --detailed
 
 ### create consumer groups
 
-we create three consumer groups
+we create consumer groups
 
 ```
 rpk topic consume policy_management --group claims
 rpk topic consume policy_management --group sales
-rpk topic consume policy_management --group notification
 
 //Validate the consumer member count
 rpk group describe claims
@@ -86,15 +87,20 @@ rpk group describe claims
 ### start consumers
 
 we create three consumer groups
-note: ensure kafka-demo-client/bin is added to %path%
 
 ```
-node consumer.js --topics policy_management --consumerGroup claims
-node consumer.js --topics policy_management --consumerGroup claims
+node consumer.js --topics policy_management_claims --consumerGroup claims
+node consumer.js --topics policy_management_claims --consumerGroup claims
 //Check rebalancing
 //rpk group describe claims
-node consumer.js --topics policy_management --consumerGroup claims
-node consumer.js --topics policy_management --consumerGroup claims
+node consumer.js --topics policy_management_sales --consumerGroup claims
+node consumer.js --topics policy_management_sales --consumerGroup claims
+
+```
+
+### start kafka demo stream to filter and map messages
+
+```
 
 ```
 

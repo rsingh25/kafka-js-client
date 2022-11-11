@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: kafka-streams-demo
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+kafka-streams-demo:
+  id: demo
+  policyInboundTopic: policy_management
+  claimsOutboundTopic: policy_management_claims
+  salesBarOutboundTopic: policy_management_sales
