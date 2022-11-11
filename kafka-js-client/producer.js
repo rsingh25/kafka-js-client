@@ -22,7 +22,7 @@ const producer = kafka.producer({
 const actions = [
   "OPPORTUNITY",
   "RENEWAL_DUE",
-  "INVESTIDATION_REPORT_ADDED",
+  "INVESTIGATION_REPORT_ADDED",
   "ISSUED",
   "CLAIM_INIT",
 ];

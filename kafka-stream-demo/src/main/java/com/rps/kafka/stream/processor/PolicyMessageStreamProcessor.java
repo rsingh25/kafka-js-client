@@ -22,8 +22,8 @@ public class PolicyMessageStreamProcessor {
     @Autowired
     private final KafkaProps properties;
 
-    private final List<String> CLAIMS_AXN = Arrays.asList();
-    private final List<String> SALES_AXN = Arrays.asList();
+    private final List<String> CLAIMS_AXN = Arrays.asList("ISSUED", "INVESTIGATION_REPORT_ADDED", "CLAIM_INIT");
+    private final List<String> SALES_AXN = Arrays.asList("OPPORTUNITY", "RENEWAL_DUE", "ISSUED");
     private final Serde<String> STRING_SERDE = Serdes.String();
 
     @Autowired

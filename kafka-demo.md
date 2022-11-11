@@ -19,12 +19,12 @@ Kafka demo using Red Panda
 
 ```
 key = policy_id
-value = OPPORTUNITY, ISSUED, RENEWAL_DUE, INVESTIDATION_REPORT_ADDED, CLAIM_INIT
+value = OPPORTUNITY, ISSUED, RENEWAL_DUE, INVESTIGATION_REPORT_ADDED, CLAIM_INIT
 ```
 
 2. Multiple consumer groups consumes the events,
 
-- CLAIM consumer group is interested in CLAIM_INIT, INVESTIDATION_REPORT_ADDED, ISSUED
+- CLAIM consumer group is interested in CLAIM_INIT, INVESTIGATION_REPORT_ADDED, ISSUED
 - SALES consumer group is interested in OPPORTUNITY, RENEWAL_DUE, ISSUED
 
 topic name - policy_management
