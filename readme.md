@@ -85,7 +85,7 @@ It is possible but there is a pitfall,
 
 Sequence Flow: Get cluster metadata using bootstrap brokers (& keep up-to-date) -> serialize -> identify partition (using partition strategy) -> send to partition leader (in micro batch) -> acknowledge or retry -> loop -> disconnect
 
-<ins>Producer uses partition strategy to identify partition and talks to the partition leader directly.</ins>
+<ins>Producer are parition aware</ins> i.e. producer uses partitioner(or partition strategy implementation) to identify partition and talks to that partition's leader.
 
 ```properties
 request.required.acks = 0: fire & forget, 1: leader acknowledged, 2: quorum acknowledged
@@ -100,6 +100,8 @@ max.in.flight.req.per.conn (1 -> guarantees absolute order) because in flight re
 Note: Track metrics to actually know message injection pattern, size etc.
 
 ## Consumer/Consumer group
+
+<img src="./resources/consumer-group.png" alt="consumer group" width="50%"/>
 
 Sequence Flow: Get cluster metadata using bootstrap brokers (& keep up-to-date) -> get partition assignments and offsets -> provide topic list and receive message batch -> process message & keep sending heartbeat -> commit offset -> loop -> disconnect
 
